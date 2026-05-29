@@ -1,0 +1,84 @@
+@baseUrl = http://localhost:8000/api
+@userNorth = user-north
+@userSouth = user-south
+@userAdmin = user-admin
+
+# Health check
+GET {{baseUrl}}/health
+
+###
+
+# Listar projetos como usuário da Construtora Norte
+GET {{baseUrl}}/projects
+x-user-id: {{userNorth}}
+
+###
+
+# Listar projetos como usuário da Urbaniza Sul
+GET {{baseUrl}}/projects
+x-user-id: {{userSouth}}
+
+###
+
+# Listar projetos como administrador global
+GET {{baseUrl}}/projects
+x-user-id: {{userAdmin}}
+
+###
+
+# Buscar detalhe do projeto Residencial Jardim das Palmeiras como usuário da Construtora Norte
+GET {{baseUrl}}/projects/project-palmeiras
+x-user-id: {{userNorth}}
+
+###
+
+# Buscar detalhe do projeto Loteamento Bela Vista como usuário da Construtora Norte
+GET {{baseUrl}}/projects/project-bela-vista
+x-user-id: {{userNorth}}
+
+###
+
+# Buscar detalhe do projeto Edifício Horizonte Sul como usuário da Urbaniza Sul
+GET {{baseUrl}}/projects/project-horizonte-sul
+x-user-id: {{userSouth}}
+
+###
+
+# Buscar detalhe do projeto Condomínio Parque Linear como usuário da Urbaniza Sul
+GET {{baseUrl}}/projects/project-parque-linear
+x-user-id: {{userSouth}}
+
+###
+
+# Buscar detalhe de projeto como administrador global
+GET {{baseUrl}}/projects/project-horizonte-sul
+x-user-id: {{userAdmin}}
+
+###
+
+# Listar documentos do projeto Residencial Jardim das Palmeiras
+GET {{baseUrl}}/projects/project-palmeiras/documents
+x-user-id: {{userNorth}}
+
+###
+
+# Listar documentos do projeto Loteamento Bela Vista
+GET {{baseUrl}}/projects/project-bela-vista/documents
+x-user-id: {{userNorth}}
+
+###
+
+# Listar documentos do projeto Edifício Horizonte Sul
+GET {{baseUrl}}/projects/project-horizonte-sul/documents
+x-user-id: {{userSouth}}
+
+###
+
+# Listar documentos do projeto Condomínio Parque Linear
+GET {{baseUrl}}/projects/project-parque-linear/documents
+x-user-id: {{userSouth}}
+
+###
+
+# Requisição sem autenticação para validar resposta 401
+GET {{baseUrl}}/projects

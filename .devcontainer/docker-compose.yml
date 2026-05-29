@@ -1,0 +1,6 @@
+services:
+  app:
+    volumes:
+      - ..:/var/www/html:cached
+      - /var/www/html/vendor
+    command: sleep infinity
